@@ -1,0 +1,63 @@
+---
+const services = [
+  {
+    title: "Video + Motion",
+    description: "Concept to final cut. Commercials, social content, brand films, reels and graphics that grab attention.",
+    bg: "bg-pink",
+    text: "text-white",
+    descText: "text-white/80",
+  },
+  {
+    title: "Creative Direction",
+    description: "Defining the visual identity, mood, and strategy behind campaigns that genuinely connect with people.",
+    bg: "bg-blue",
+    text: "text-white",
+    descText: "text-white/80",
+  },
+  {
+    title: "AI + Agentic",
+    description: "Automated systems, tooling builds, and analytic aggregation to help your brand stand out.",
+    bg: "bg-yellow",
+    text: "text-dark",
+    descText: "text-dark/70",
+  },
+  {
+    title: "Content Strategy",
+    description: "Planning and producing transmedia content systems that work across platforms — not just one-off posts.",
+    bg: "bg-coral",
+    text: "text-white",
+    descText: "text-white/80",
+  },
+  {
+    title: "Brand Visuals",
+    description: "Papers, decks, design, and uniform visual assets that give your brand a look people recognize instantly.",
+    bg: "bg-green",
+    text: "text-white",
+    descText: "text-white/80",
+  },
+  {
+    title: "Consulting + Speaking",
+    description: "Mentoring, panel talks, creative feedback, workflow audits, and hands-on guidance for in-house teams leveling up.",
+    bg: "bg-dark",
+    text: "text-cream",
+    descText: "text-cream/70",
+  },
+];
+
+---
+
+<section id="services" class="px-5 py-8 md:py-12 relative">
+  <div class="mx-auto max-w-6xl">
+    <h2 class="reveal font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight mb-10 text-center">
+      What I Do
+    </h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger">
+      {services.map((service) => (
+        <div class={`reveal service-card ${service.bg} rounded-2xl p-7 flex flex-col`}>
+          <h3 class={`font-display font-bold text-xl mb-3 ${service.text}`}>{service.title}</h3>
+          <p class={`${service.descText} leading-relaxed text-[0.95rem] font-body`}>{service.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

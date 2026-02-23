@@ -1,0 +1,62 @@
+---
+/*
+  Drop your gallery images into /public/gallery/
+  Name them however you like — they'll appear in the order listed here.
+  Recommended: optimize GIFs or convert to WebP for faster mobile loads.
+*/
+const topRow = [
+  { src: "/gallery/placeholder-1.svg", alt: "Work sample 1" },
+  { src: "/gallery/placeholder-2.svg", alt: "Work sample 2" },
+  { src: "/gallery/placeholder-3.svg", alt: "Work sample 3" },
+  { src: "/gallery/placeholder-4.svg", alt: "Work sample 4" },
+  { src: "/gallery/placeholder-5.svg", alt: "Work sample 5" },
+  { src: "/gallery/placeholder-6.svg", alt: "Work sample 6" },
+];
+
+const bottomRow = [
+  { src: "/gallery/placeholder-7.svg", alt: "Work sample 7" },
+  { src: "/gallery/placeholder-8.svg", alt: "Work sample 8" },
+  { src: "/gallery/placeholder-9.svg", alt: "Work sample 9" },
+  { src: "/gallery/placeholder-10.svg", alt: "Work sample 10" },
+  { src: "/gallery/placeholder-11.svg", alt: "Work sample 11" },
+  { src: "/gallery/placeholder-12.svg", alt: "Work sample 12" },
+];
+---
+
+<section class="py-8 md:py-12 overflow-hidden bg-dark/[0.03]">
+  <h2 class="reveal font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight mb-12 text-center px-5">
+    Fun & Informative Visuals + Ads
+  </h2>
+
+  {/* Row 1 — scrolls left */}
+  <div class="marquee-track mb-4">
+    <div class="animate-marquee flex gap-4 w-max">
+      {[...topRow, ...topRow].map((img) => (
+        <div class="flex-shrink-0 h-48 sm:h-56 md:h-64 w-auto rounded-xl overflow-hidden bg-dark/5 border-2 border-dark/5">
+          <img
+            src={img.src}
+            alt={img.alt}
+            class="h-full w-auto object-cover"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Row 2 — scrolls right */}
+  <div class="marquee-track">
+    <div class="animate-marquee-reverse flex gap-4 w-max">
+      {[...bottomRow, ...bottomRow].map((img) => (
+        <div class="flex-shrink-0 h-48 sm:h-56 md:h-64 w-auto rounded-xl overflow-hidden bg-dark/5 border-2 border-dark/5">
+          <img
+            src={img.src}
+            alt={img.alt}
+            class="h-full w-auto object-cover"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

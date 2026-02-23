@@ -1,0 +1,100 @@
+---
+const navItems = [
+  { label: "Reel", href: "#reel", color: "blue", border: "border-blue/40", hoverBg: "hover:bg-blue", dotBg: "bg-blue" },
+  { label: "Clients", href: "#clients", color: "coral", border: "border-coral/40", hoverBg: "hover:bg-coral", dotBg: "bg-coral" },
+  { label: "What I Do", href: "#services", color: "yellow", border: "border-yellow/60", hoverBg: "hover:bg-yellow hover:text-dark", dotBg: "bg-yellow" },
+  { label: "Contact", href: "#contact", color: "dark", border: "border-dark/40", hoverBg: "hover:bg-dark hover:text-cream", dotBg: "bg-dark" },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="site-header">
+  <div class="mx-auto max-w-7xl px-5 py-4 flex items-center justify-between">
+    <a href="#" class="font-display font-bold text-2xl md:text-3xl tracking-tight text-dark hover:text-pink transition-colors">
+      KJ
+    </a>
+
+    {/* Desktop nav */}
+    <nav class="hidden md:flex items-center gap-3" aria-label="Main navigation">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class={`nav-pill px-5 py-2 rounded-full border-2 ${item.border} text-sm font-display font-medium text-dark ${item.hoverBg} hover:text-white hover:border-transparent`}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    {/* Mobile hamburger */}
+    <button
+      class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+      id="menu-toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      <span class="block w-6 h-0.5 bg-dark transition-all duration-300 origin-center" id="bar-1"></span>
+      <span class="block w-6 h-0.5 bg-dark transition-all duration-300" id="bar-2"></span>
+      <span class="block w-6 h-0.5 bg-dark transition-all duration-300 origin-center" id="bar-3"></span>
+    </button>
+  </div>
+
+  {/* Mobile menu overlay */}
+  <div class="mobile-menu fixed inset-0 bg-cream z-40 flex flex-col items-center justify-center gap-8 md:hidden" id="mobile-menu">
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class="mobile-nav-link font-display text-4xl font-bold text-dark hover:text-pink transition-colors flex items-center gap-4"
+      >
+        <span class={`w-3 h-3 rounded-full ${item.dotBg}`}></span>
+        {item.label}
+      </a>
+    ))}
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById("site-header")!;
+  const toggle = document.getElementById("menu-toggle")!;
+  const menu = document.getElementById("mobile-menu")!;
+  const bar1 = document.getElementById("bar-1")!;
+  const bar2 = document.getElementById("bar-2")!;
+  const bar3 = document.getElementById("bar-3")!;
+  const mobileLinks = menu.querySelectorAll(".mobile-nav-link");
+
+  let menuOpen = false;
+
+  function setMenu(open: boolean) {
+    menuOpen = open;
+    toggle.setAttribute("aria-expanded", String(open));
+    menu.classList.toggle("open", open);
+    document.body.style.overflow = open ? "hidden" : "";
+
+    if (open) {
+      bar1.style.transform = "rotate(45deg) translateY(4px)";
+      bar2.style.opacity = "0";
+      bar3.style.transform = "rotate(-45deg) translateY(-4px)";
+    } else {
+      bar1.style.transform = "";
+      bar2.style.opacity = "";
+      bar3.style.transform = "";
+    }
+  }
+
+  toggle.addEventListener("click", () => setMenu(!menuOpen));
+  mobileLinks.forEach((link) => link.addEventListener("click", () => setMenu(false)));
+
+  let lastScroll = 0;
+  window.addEventListener("scroll", () => {
+    const y = window.scrollY;
+    if (y > 80) {
+      header.style.background = "rgba(245, 240, 232, 0.92)";
+      header.style.backdropFilter = "blur(12px)";
+      header.style.boxShadow = "0 1px 12px rgba(0,0,0,0.06)";
+    } else {
+      header.style.background = "";
+      header.style.backdropFilter = "";
+      header.style.boxShadow = "";
+    }
+    lastScroll = y;
+  }, { passive: true });
+</script>

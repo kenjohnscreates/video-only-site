@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #F5F0E8;
+  --color-dark: #1A1A1A;
+  --color-pink: #FF2D6B;
+  --color-blue: #2B4FFF;
+  --color-yellow: #FFD600;
+  --color-red: #FF3B30;
+  --color-green: #00C853;
+  --color-coral: #FF6F61;
+  --color-hot-pink: #FF1493;
+
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hiA.woff2") format("woff2");
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-dark);
+  background-color: var(--color-cream);
+  overflow-x: hidden;
+}
+
+/* Paper grain texture overlay */
+.texture-grain {
+  position: relative;
+}
+.texture-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 35s linear infinite;
+}
+
+.marquee-track:hover .animate-marquee,
+.marquee-track:hover .animate-marquee-reverse {
+  animation-play-state: paused;
+}
+
+/* Scroll reveal */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.revealed {
+  animation: reveal-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Stagger children */
+.reveal-stagger > .reveal:nth-child(1) { animation-delay: 0ms; }
+.reveal-stagger > .reveal:nth-child(2) { animation-delay: 80ms; }
+.reveal-stagger > .reveal:nth-child(3) { animation-delay: 160ms; }
+.reveal-stagger > .reveal:nth-child(4) { animation-delay: 240ms; }
+.reveal-stagger > .reveal:nth-child(5) { animation-delay: 320ms; }
+.reveal-stagger > .reveal:nth-child(6) { animation-delay: 400ms; }
+
+/* YouTube lite embed */
+.yt-lite {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+  background-position: center;
+  background-size: cover;
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.yt-lite::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.yt-lite .play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 72px;
+  height: 72px;
+  background: var(--color-pink);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.yt-lite:hover .play-btn {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.yt-lite .play-btn svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+  margin-left: 3px;
+}
+
+.yt-lite.activated {
+  cursor: default;
+}
+
+.yt-lite.activated::before,
+.yt-lite.activated .play-btn {
+  display: none;
+}
+
+/* Highlight pill — colored background behind inline text */
+.highlight-pill {
+  position: relative;
+  display: inline;
+  padding: 0.05em 0.3em;
+  border-radius: 0.25em;
+  font-weight: 600;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.highlight-pill--pink {
+  background: var(--color-pink);
+  color: white;
+}
+
+.highlight-pill--blue {
+  background: var(--color-blue);
+  color: white;
+}
+
+.highlight-pill--yellow {
+  background: var(--color-yellow);
+  color: var(--color-dark);
+}
+
+.highlight-pill--coral {
+  background: var(--color-coral);
+  color: white;
+}
+
+/* Logo grid hover */
+.client-logo {
+  filter: grayscale(100%) brightness(0) invert(1);
+  opacity: 0.5;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.client-logo:hover {
+  filter: grayscale(0%) brightness(0) invert(1);
+  opacity: 1;
+}
+
+/* Service card — bold color-filled */
+.service-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+}
+
+.service-card:hover {
+  transform: translateY(-6px) rotate(-0.5deg);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+}
+
+/* Nav pill */
+.nav-pill {
+  transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-pill:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile menu */
+.mobile-menu {
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Form input focus */
+.form-input {
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-input:focus {
+  border-color: var(--color-yellow);
+  box-shadow: 0 0 0 3px rgba(255, 214, 0, 0.25);
+  outline: none;
+}

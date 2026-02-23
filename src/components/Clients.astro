@@ -1,0 +1,50 @@
+---
+/*
+  Add your client logos to /public/logos/
+  Use SVG or transparent PNG for best results.
+  Update this array with the real file names.
+*/
+const logos = [
+  { src: "/logos/natgeo-site.png", alt: "Client 1" },
+  { src: "/logos/near_logo_wht.svg", alt: "Client 2" },
+  { src: "/logos/disco-site.png", alt: "Client 3" },
+  { src: "/logos/ample-final-gray-01.png", alt: "Client 4" },
+  { src: "/logos/mtv-site-update.png", alt: "Client 5" },
+  { src: "/logos/bitte-logo-white.svg", alt: "Client 6" },
+  { src: "/logos/viacom.png", alt: "Client 7" },
+  { src: "/logos/ethdenver-site.png", alt: "Client 8" },
+  { src: "/logos/aspen-for-site.png", alt: "Client 9" },
+  { src: "/logos/nftnyc-site.png", alt: "Client 10" },
+  { src: "/logos/3M-site-update.png", alt: "Client 11" },
+  { src: "/logos/toyota-site.png", alt: "Client 12" },
+  { src: "/logos/google-site.png", alt: "Client 13" },
+  { src: "/logos/foodnetwork-site.png", alt: "Client 14" },
+  { src: "/logos/CuriosityStream®_Wht+Gold.png", alt: "Client 15" },
+  { src: "/logos/worldbank-update-site.png", alt: "Client 16" },
+  { src: "/logos/lm-site-update.png", alt: "Client 17" },
+  { src: "/logos/tenable-site.png", alt: "Client 18" },
+  { src: "/logos/bankofamerica-site.png", alt: "Client 19" },
+  { src: "/logos/tlc-update-site.png", alt: "Client 20" },
+];
+---
+
+<section id="clients" class="px-5 py-8 md:py-12 bg-coral texture-grain">
+  <div class="mx-auto max-w-6xl relative z-10">
+    <h2 class="reveal font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight       mb-10 text-center text-white">
+      A few brands I've worked with
+    </h2>
+
+    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-8 md:gap-10 items-center justify-items-center reveal-stagger">
+      {logos.map((logo) => (
+        <div class="reveal flex items-center justify-center p-3">
+          <img
+            src={logo.src}
+            alt={logo.alt}
+            class="client-logo h-10 sm:h-12 md:h-14 w-auto max-w-[120px] object-contain"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
