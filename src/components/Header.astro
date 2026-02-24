@@ -1,10 +1,5 @@
 ---
-const navItems = [
-  { label: "Reel", href: "#reel", color: "blue", border: "border-blue/40", hoverBg: "hover:bg-blue", dotBg: "bg-blue" },
-  { label: "Clients", href: "#clients", color: "coral", border: "border-coral/40", hoverBg: "hover:bg-coral", dotBg: "bg-coral" },
-  { label: "What I Do", href: "#services", color: "yellow", border: "border-yellow/60", hoverBg: "hover:bg-yellow hover:text-dark", dotBg: "bg-yellow" },
-  { label: "Contact", href: "#contact", color: "dark", border: "border-dark/40", hoverBg: "hover:bg-dark hover:text-cream", dotBg: "bg-dark" },
-];
+import { navItems } from "../data/nav";
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="site-header">
@@ -37,19 +32,6 @@ const navItems = [
       <span class="block w-6 h-0.5 bg-dark transition-all duration-300 origin-center" id="bar-3"></span>
     </button>
   </div>
-
-  {/* Mobile menu overlay */}
-  <div class="mobile-menu fixed inset-0 bg-cream z-[60] flex flex-col items-center justify-center gap-8 md:hidden touch-none" id="mobile-menu">
-    {navItems.map((item) => (
-      <a
-        href={item.href}
-        class="mobile-nav-link font-display text-4xl font-bold text-dark hover:text-pink transition-colors flex items-center gap-4"
-      >
-        <span class={`w-3 h-3 rounded-full ${item.dotBg}`}></span>
-        {item.label}
-      </a>
-    ))}
-  </div>
 </header>
 
 <script>
@@ -66,37 +48,18 @@ const navItems = [
   function setMenu(open: boolean) {
     menuOpen = open;
     toggle.setAttribute("aria-expanded", String(open));
+    menu.classList.toggle("open", open);
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    document.body.style.overflow = open ? "hidden" : "";
 
     if (open) {
-      header.style.background = "";
-      header.style.backdropFilter = "";
-      header.style.boxShadow = "";
-      document.documentElement.style.overflow = "hidden";
-      document.body.style.overflow = "hidden";
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          menu.classList.add("open");
-        });
-      });
       bar1.style.transform = "rotate(45deg) translateY(4px)";
       bar2.style.opacity = "0";
       bar3.style.transform = "rotate(-45deg) translateY(-4px)";
     } else {
-      menu.classList.remove("open");
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
       bar1.style.transform = "";
       bar2.style.opacity = "";
       bar3.style.transform = "";
-      if (window.scrollY > 80) {
-        header.style.background = "rgba(245, 240, 232, 0.92)";
-        header.style.backdropFilter = "blur(12px)";
-        header.style.boxShadow = "0 1px 12px rgba(0,0,0,0.06)";
-      } else {
-        header.style.background = "";
-        header.style.backdropFilter = "";
-        header.style.boxShadow = "";
-      }
     }
   }
 

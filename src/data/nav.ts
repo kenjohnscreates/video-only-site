@@ -1,0 +1,6 @@
+export const navItems = [
+  { label: "Reel", href: "#reel", color: "blue", border: "border-blue/40", hoverBg: "hover:bg-blue", dotBg: "bg-blue" },
+  { label: "Clients", href: "#clients", color: "coral", border: "border-coral/40", hoverBg: "hover:bg-coral", dotBg: "bg-coral" },
+  { label: "What I Do", href: "#services", color: "yellow", border: "border-yellow/60", hoverBg: "hover:bg-yellow hover:text-dark", dotBg: "bg-yellow" },
+  { label: "Contact", href: "#contact", color: "dark", border: "border-dark/40", hoverBg: "hover:bg-dark hover:text-cream", dotBg: "bg-dark" },
+] as const;
