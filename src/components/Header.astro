@@ -66,15 +66,22 @@ const navItems = [
   function setMenu(open: boolean) {
     menuOpen = open;
     toggle.setAttribute("aria-expanded", String(open));
-    menu.classList.toggle("open", open);
-    document.documentElement.style.overflow = open ? "hidden" : "";
-    document.body.style.overflow = open ? "hidden" : "";
 
     if (open) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          menu.classList.add("open");
+        });
+      });
       bar1.style.transform = "rotate(45deg) translateY(4px)";
       bar2.style.opacity = "0";
       bar3.style.transform = "rotate(-45deg) translateY(-4px)";
     } else {
+      menu.classList.remove("open");
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
       bar1.style.transform = "";
       bar2.style.opacity = "";
       bar3.style.transform = "";
