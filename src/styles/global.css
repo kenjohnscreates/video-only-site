@@ -235,19 +235,15 @@ body {
 /* Mobile menu */
 .mobile-menu {
   transform: translateX(100%);
-  opacity: 0;
   visibility: hidden;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-              opacity 0.3s ease-out,
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               visibility 0s linear 0.4s;
 }
 
 .mobile-menu.open {
   transform: translateX(0);
-  opacity: 1;
   visibility: visible;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-              opacity 0.3s ease-out,
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               visibility 0s linear 0s;
 }
 
