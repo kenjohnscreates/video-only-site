@@ -39,7 +39,7 @@ const navItems = [
   </div>
 
   {/* Mobile menu overlay */}
-  <div class="mobile-menu fixed inset-0 bg-cream z-[60] flex flex-col items-center justify-center gap-8 md:hidden" id="mobile-menu">
+  <div class="mobile-menu fixed inset-0 bg-cream z-[60] flex flex-col items-center justify-center gap-8 md:hidden touch-none" id="mobile-menu">
     {navItems.map((item) => (
       <a
         href={item.href}
@@ -67,20 +67,8 @@ const navItems = [
     menuOpen = open;
     toggle.setAttribute("aria-expanded", String(open));
     menu.classList.toggle("open", open);
-
-    if (open) {
-      document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%";
-      document.body.style.top = `-${window.scrollY}px`;
-    } else {
-      const scrollY = document.body.style.top;
-      document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.width = "";
-      document.body.style.top = "";
-      window.scrollTo(0, parseInt(scrollY || "0") * -1);
-    }
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    document.body.style.overflow = open ? "hidden" : "";
 
     if (open) {
       bar1.style.transform = "rotate(45deg) translateY(4px)";
