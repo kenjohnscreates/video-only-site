@@ -44,6 +44,14 @@ body {
   overflow-x: hidden;
 }
 
+/* Anchor targets: offset scroll so fixed header does not cover section titles */
+#reel,
+#clients,
+#services,
+#contact {
+  scroll-margin-top: 5rem;
+}
+
 /* Paper grain texture overlay */
 .texture-grain {
   position: relative;
