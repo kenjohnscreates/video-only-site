@@ -68,6 +68,9 @@ const navItems = [
     toggle.setAttribute("aria-expanded", String(open));
 
     if (open) {
+      header.style.background = "";
+      header.style.backdropFilter = "";
+      header.style.boxShadow = "";
       document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
       requestAnimationFrame(() => {
@@ -85,6 +88,15 @@ const navItems = [
       bar1.style.transform = "";
       bar2.style.opacity = "";
       bar3.style.transform = "";
+      if (window.scrollY > 80) {
+        header.style.background = "rgba(245, 240, 232, 0.92)";
+        header.style.backdropFilter = "blur(12px)";
+        header.style.boxShadow = "0 1px 12px rgba(0,0,0,0.06)";
+      } else {
+        header.style.background = "";
+        header.style.backdropFilter = "";
+        header.style.boxShadow = "";
+      }
     }
   }
 
