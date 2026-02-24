@@ -11,6 +11,9 @@ const {
   title = "Kenny Johns",
   description = "Creative, Marketing and Go-To-Market for brands that want to stand out.",
 } = Astro.props;
+
+const siteUrl = "https://kennyjohns.vercel.app";
+const shareImageUrl = `${siteUrl}/og-image.png`;
 ---
 
 <!doctype html>
@@ -18,12 +21,16 @@ const {
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content={shareImageUrl} />
+    <meta property="og:url" content={siteUrl} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={shareImageUrl} />
     <title>{title}</title>
   </head>
   <body class="texture-grain">
