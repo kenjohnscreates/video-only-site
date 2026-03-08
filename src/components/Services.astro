@@ -1,66 +1,83 @@
 ---
 const services = [
   {
-    title: "Video + Motion",
-    description: "Concept to final cut. Commercials, social content, brand films, reels and graphics that grab attention.",
+    title: "Content + Narrative",
+    description:
+      "Messaging, editorial strategy, and multi-format content designed to ship weekly and compound.",
     bg: "bg-pink",
     text: "text-white",
     descText: "text-white/80",
   },
   {
-    title: "Creative Direction",
-    description: "Defining the visual identity, mood, and strategy behind campaigns that genuinely connect with people.",
+    title: "Social + Community Loops",
+    description:
+      "Platform-native content ops and community activation that build trust, momentum, and repeatable growth.",
     bg: "bg-blue",
     text: "text-white",
     descText: "text-white/80",
   },
   {
-    title: "AI + Agentic",
-    description: "Automated systems, tooling builds, and analytic aggregation to help your brand stand out.",
+    title: "Launch + Partnerships",
+    description:
+      "GTM planning and co-marketing with partners to expand distribution and accelerate launches.",
     bg: "bg-yellow",
     text: "text-dark",
     descText: "text-dark/70",
   },
   {
-    title: "Content + Social Strategy",
-    description: "Planning and producing transmedia content systems that work across multiple platforms, not just one-off posts.",
+    title: "Video + Motion Production",
+    description:
+      "Concept to final cut. Social video, promos, and motion assets that earn attention and support the loop.",
     bg: "bg-coral",
     text: "text-white",
     descText: "text-white/80",
   },
   {
-    title: "Visuals + Writing",
-    description: "Papers, decks, design, and uniform visual assets that give your brand a look people recognize instantly.",
+    title: "Analytics + Automation",
+    description:
+      "KPI tracking and lightweight tooling (Python + AI) to improve iteration speed and decision quality.",
     bg: "bg-green",
     text: "text-white",
     descText: "text-white/80",
   },
   {
-    title: "Consulting + Speaking",
-    description: "Mentoring, panel talks, creative feedback, workflow audits, and hands-on guidance for in-house teams leveling up.",
+    title: "Operator Execution",
+    description:
+      "Cross-functional delivery across product, BD, legal, and creative. I build process and ship.",
     bg: "bg-dark",
     text: "text-cream",
     descText: "text-cream/70",
   },
 ];
-
 ---
 
 <section id="services" class="px-5 py-8 md:py-12 relative">
   <div class="mx-auto max-w-6xl">
-    <h2 class="reveal font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4 text-center">
-      What I Do
+    <h2
+      class="reveal font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4 text-center"
+    >
+      How I Drive Growth
     </h2>
     <p class="reveal text-center text-dark/60 text-lg mb-10 font-body">
-      Content, marketing and go-to-market strategies that help you make moves.
+      Content-led GTM systems that convert attention into demand.
     </p>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger">
-      {services.map((service) => (
-        <div class={`reveal service-card ${service.bg} rounded-2xl p-7 flex flex-col`}>
-          <h3 class={`font-display font-bold text-xl mb-3 ${service.text}`}>{service.title}</h3>
-          <p class={`${service.descText} leading-relaxed text-[0.95rem] font-body`}>{service.description}</p>
-        </div>
-      ))}
+      {
+        services.map((service) => (
+          <div
+            class={`reveal service-card ${service.bg} rounded-2xl p-7 flex flex-col`}
+          >
+            <h3 class={`font-display font-bold text-xl mb-3 ${service.text}`}>
+              {service.title}
+            </h3>
+            <p
+              class={`${service.descText} leading-relaxed text-[0.95rem] font-body`}
+            >
+              {service.description}
+            </p>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>

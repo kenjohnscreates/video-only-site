@@ -1,0 +1,142 @@
+---
+import { caseStudies } from "../data/caseStudies";
+---
+
+<section
+  id="case-studies"
+  class="px-4 py-8 md:px-5 md:py-12 bg-cream texture-grain relative overflow-x-hidden w-full max-w-full"
+  data-selected="0"
+>
+  <div
+    class="mx-auto max-w-6xl relative z-10 min-w-0 w-full max-w-full overflow-x-hidden box-border"
+  >
+    <h2
+      class="reveal font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight mb-2 text-center text-dark"
+    >
+      Case Studies
+    </h2>
+    <p
+      class="reveal text-center text-dark/70 text-lg mb-10 font-body max-w-2xl mx-auto"
+    >
+      A closer look at how we worked together: goal, role, and results
+    </p>
+
+    <!-- Folder: tabs on top (each tab is its own container), then the folder body -->
+    <div class="reveal case-folder-wrap">
+      <!-- Mobile only: dropdown to choose case study -->
+      <div
+        class="case-studies-mobile-select block md:hidden w-full max-w-full mb-4"
+      >
+        <label for="case-studies-select" class="sr-only"
+          >Choose case study</label
+        >
+        <select
+          id="case-studies-select"
+          class="case-studies-select w-full max-w-full font-display font-bold text-base uppercase tracking-wide rounded-xl border-2 border-dark/20 bg-white text-dark px-4 py-3 appearance-auto cursor-pointer"
+          aria-label="Choose case study"
+        >
+          {
+            caseStudies.map((study, index) => (
+              <option value={index}>{study.clientName}</option>
+            ))
+          }
+        </select>
+      </div>
+
+      <!-- Desktop: tabs row (hidden on mobile) -->
+      <div
+        class="case-tabs-row hidden md:flex"
+        role="tablist"
+        aria-label="Select case study"
+      >
+        {
+          caseStudies.map((study, index) => (
+            <button
+              type="button"
+              class={
+                "case-tab font-display text-xs sm:text-sm font-bold tracking-wide uppercase px-6 py-3 transition-all duration-300 whitespace-nowrap flex-shrink-0" +
+                (index === 0 ? " case-tab--active" : "")
+              }
+              data-index={index}
+              data-accent={study.accentColor}
+              role="tab"
+              aria-selected={index === 0}
+              aria-controls={"case-study-detail-" + index}
+              id={"case-study-tab-" + index}
+            >
+              {study.clientName}
+            </button>
+          ))
+        }
+      </div>
+
+      <!-- Folder body: one container per “folder”; color matches active tab, no top border at tab junction -->
+      <div
+        class="case-container-wrapper case-folder-body rounded-[32px] border-4 border-t-0 border-blue bg-blue overflow-hidden shadow-xl min-w-0"
+        data-accent="blue"
+      >
+        <div class="px-4 pb-4 pt-4 md:px-6 md:pb-6 md:pt-6 min-w-0">
+          <div
+            class="case-inner-panel rounded-3xl bg-white px-5 py-6 md:px-8 md:py-8 min-w-0 overflow-hidden"
+          >
+            <!-- Content panels: one visible at a time -->
+            <div class="relative min-h-[400px] min-w-0" aria-live="polite">
+              {
+                caseStudies.map((study, index) => {
+                  return (
+                    <div
+                      id={"case-study-detail-" + index}
+                      class={
+                        "case-study-detail" + (index === 0 ? " is-active" : "")
+                      }
+                      data-index={index}
+                      role="tabpanel"
+                      aria-labelledby={"case-study-tab-" + index}
+                      hidden={index !== 0 ? true : false}
+                    >
+                      <div class="grid md:grid-cols-2 gap-8 md:gap-12 min-w-0">
+                        <div class="space-y-6 font-body text-dark/90 order-2 md:order-1">
+                          <div>
+                            <h4 class="font-display font-bold text-lg text-dark mb-2">
+                              Goal
+                            </h4>
+                            <p class="leading-relaxed">{study.goal}</p>
+                          </div>
+                          <div>
+                            <h4 class="font-display font-bold text-lg text-dark mb-2">
+                              Role
+                            </h4>
+                            <p class="leading-relaxed">{study.role}</p>
+                          </div>
+                          <div>
+                            <h4 class="font-display font-bold text-lg text-dark mb-2">
+                              Results
+                            </h4>
+                            <p class="leading-relaxed">{study.results}</p>
+                          </div>
+                        </div>
+
+                        <div class="flex flex-col gap-6 order-1 md:order-2 md:items-center md:justify-center case-study-image-col">
+                          <div class="case-study-image rounded-xl overflow-hidden bg-dark/5 aspect-[4/3] w-full">
+                            <img
+                              src={study.image}
+                              alt={study.clientName + " case study"}
+                              class="w-full h-full object-cover"
+                              loading="lazy"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../scripts/case-studies.js"></script>

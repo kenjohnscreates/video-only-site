@@ -28,23 +28,40 @@ const logos = [
 ];
 ---
 
-<section id="clients" class="px-5 py-8 md:py-12 bg-coral texture-grain">
-  <div class="mx-auto max-w-6xl relative z-10">
-    <h2 class="reveal font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight       mb-10 text-center text-white">
-      A few brands I've worked with
+<section
+  id="clients"
+  class="px-5 py-8 md:py-12 bg-coral texture-grain overflow-x-hidden w-full max-w-full"
+>
+  <div class="mx-auto max-w-6xl relative z-10 w-full max-w-full min-w-0">
+    <h2
+      class="reveal font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight mb-3 text-center text-white"
+    >
+      Brands and teams I've supported
     </h2>
+    <p class="reveal text-center text-white/80 text-lg mb-10 font-body">
+      From major networks to early-stage teams shipping fast
+    </p>
 
-    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-8 md:gap-10 items-center justify-items-center reveal-stagger">
-      {logos.map((logo) => (
-        <div class="reveal flex items-center justify-center p-3">
-          <img
-            src={logo.src}
-            alt={logo.alt}
-            class="client-logo h-10 sm:h-12 md:h-14 w-auto max-w-[120px] object-contain"
-            loading="lazy"
-          />
-        </div>
-      ))}
+    <div
+      class="overflow-x-auto min-w-0 w-full"
+      style="-webkit-overflow-scrolling: touch;"
+    >
+      <div
+        class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 sm:gap-8 md:gap-10 items-center justify-items-center reveal-stagger w-max min-w-full"
+      >
+        {
+          logos.map((logo) => (
+            <div class="reveal flex items-center justify-center p-2 sm:p-3">
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                class="client-logo h-10 sm:h-12 md:h-14 w-auto max-w-[100px] sm:max-w-[120px] object-contain"
+                loading="lazy"
+              />
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>

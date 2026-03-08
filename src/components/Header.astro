@@ -2,22 +2,30 @@
 import { navItems } from "../data/nav";
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="site-header">
+<header
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  id="site-header"
+>
   <div class="mx-auto max-w-7xl px-5 py-4 flex items-center justify-between">
-    <a href="#" class="font-display font-bold text-2xl md:text-3xl tracking-tight text-dark hover:text-pink transition-colors">
+    <a
+      href="#"
+      class="font-display font-bold text-2xl md:text-3xl tracking-tight text-dark hover:text-pink transition-colors"
+    >
       KJ
     </a>
 
     {/* Desktop nav */}
     <nav class="hidden md:flex items-center gap-3" aria-label="Main navigation">
-      {navItems.map((item) => (
-        <a
-          href={item.href}
-          class={`nav-pill px-5 py-2 rounded-full border-2 ${item.border} text-sm font-display font-medium text-dark ${item.hoverBg} hover:text-white hover:border-transparent`}
-        >
-          {item.label}
-        </a>
-      ))}
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`nav-pill px-5 py-2 rounded-full border-2 ${item.border} text-sm font-display font-medium text-dark ${item.hoverBg} hover:text-white hover:border-transparent`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
     </nav>
 
     {/* Mobile hamburger */}
@@ -27,9 +35,15 @@ import { navItems } from "../data/nav";
       aria-label="Open menu"
       aria-expanded="false"
     >
-      <span class="block w-6 h-0.5 bg-dark transition-all duration-300 origin-center" id="bar-1"></span>
-      <span class="block w-6 h-0.5 bg-dark transition-all duration-300" id="bar-2"></span>
-      <span class="block w-6 h-0.5 bg-dark transition-all duration-300 origin-center" id="bar-3"></span>
+      <span
+        class="block w-6 h-0.5 bg-dark transition-all duration-300 origin-center"
+        id="bar-1"></span>
+      <span
+        class="block w-6 h-0.5 bg-dark transition-all duration-300"
+        id="bar-2"></span>
+      <span
+        class="block w-6 h-0.5 bg-dark transition-all duration-300 origin-center"
+        id="bar-3"></span>
     </button>
   </div>
 </header>
@@ -64,20 +78,24 @@ import { navItems } from "../data/nav";
   }
 
   toggle.addEventListener("click", () => setMenu(!menuOpen));
-  mobileLinks.forEach((link) => link.addEventListener("click", () => setMenu(false)));
+  mobileLinks.forEach((link) =>
+    link.addEventListener("click", () => setMenu(false))
+  );
 
-  let lastScroll = 0;
-  window.addEventListener("scroll", () => {
-    const y = window.scrollY;
-    if (y > 80) {
-      header.style.background = "rgba(245, 240, 232, 0.92)";
-      header.style.backdropFilter = "blur(12px)";
-      header.style.boxShadow = "0 1px 12px rgba(0,0,0,0.06)";
-    } else {
-      header.style.background = "";
-      header.style.backdropFilter = "";
-      header.style.boxShadow = "";
-    }
-    lastScroll = y;
-  }, { passive: true });
+  window.addEventListener(
+    "scroll",
+    () => {
+      const y = window.scrollY;
+      if (y > 80) {
+        header.style.background = "rgba(245, 240, 232, 0.92)";
+        header.style.backdropFilter = "blur(12px)";
+        header.style.boxShadow = "0 1px 12px rgba(0,0,0,0.06)";
+      } else {
+        header.style.background = "";
+        header.style.backdropFilter = "";
+        header.style.boxShadow = "";
+      }
+    },
+    { passive: true }
+  );
 </script>

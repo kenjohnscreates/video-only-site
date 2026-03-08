@@ -6,9 +6,11 @@ const posterUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
 
 <section id="reel" class="px-5 py-8 md:py-12 bg-blue texture-grain">
   <div class="mx-auto max-w-5xl relative z-10">
-    <h2 class="reveal font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight mb-10 text-center text-cream">
-      See samples in &lt;90 seconds
-    </h2>
+    <p
+      class="reveal text-center text-white text-lg sm:text-xl md:text-2xl leading-relaxed font-body mb-10"
+    >
+      Preview the creative execution behind the growth systems in &lt;90 seconds
+    </p>
     <div class="reveal">
       <div
         class="yt-lite"
@@ -17,11 +19,14 @@ const posterUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
       >
         <button class="play-btn" aria-label="Play video reel">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 5v14l11-7z" />
+            <path d="M8 5v14l11-7z"></path>
           </svg>
         </button>
       </div>
     </div>
+    <p class="reveal text-center text-cream/60 text-sm mt-4 font-body">
+      Formats: social video, promos, brand films, motion graphics
+    </p>
   </div>
 </section>
 
@@ -33,9 +38,11 @@ const posterUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
       const iframe = document.createElement("iframe");
       iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
       iframe.title = "Video reel";
-      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      iframe.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
       iframe.allowFullscreen = true;
-      iframe.style.cssText = "position:absolute;inset:0;width:100%;height:100%;border:0;";
+      iframe.style.cssText =
+        "position:absolute;inset:0;width:100%;height:100%;border:0;";
       el.classList.add("activated");
       el.innerHTML = "";
       el.appendChild(iframe);

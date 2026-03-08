@@ -8,14 +8,14 @@ A single-page portfolio website for **Kenny Johns**, a creative professional. Th
 
 ## 2. Creative Direction (from reference screenshots)
 
-| Element | Direction |
-|---|---|
-| **Typography** | Bold, oversized display headings (condensed sans-serif or display face). Clean sans-serif for body. Mix of weights for hierarchy. |
-| **Color palette** | Vibrant primaries — hot pink, electric blue, bold red, bright yellow — set against warm off-white/paper textures and occasional dark sections. |
-| **Textures** | Subtle paper/grain texture on backgrounds. Risograph-inspired noise. Nothing perfectly clean — tactile and printed feel. |
-| **Layout** | Full-bleed color-blocked sections. Asymmetric compositions. Playful element placement (rotated labels, floating shapes). Generous whitespace between sections. |
-| **Personality** | Fun, approachable, slightly irreverent. The site should feel like a person, not a template. Micro-interactions and motion add life. |
-| **Navigation** | Circular/pill-shaped nav items with a hand-drawn or rounded feel. Sticky or floating menu. |
+| Element           | Direction                                                                                                                                                      |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Typography**    | Bold, oversized display headings (condensed sans-serif or display face). Clean sans-serif for body. Mix of weights for hierarchy.                              |
+| **Color palette** | Vibrant primaries — hot pink, electric blue, bold red, bright yellow — set against warm off-white/paper textures and occasional dark sections.                 |
+| **Textures**      | Subtle paper/grain texture on backgrounds. Risograph-inspired noise. Nothing perfectly clean — tactile and printed feel.                                       |
+| **Layout**        | Full-bleed color-blocked sections. Asymmetric compositions. Playful element placement (rotated labels, floating shapes). Generous whitespace between sections. |
+| **Personality**   | Fun, approachable, slightly irreverent. The site should feel like a person, not a template. Micro-interactions and motion add life.                            |
+| **Navigation**    | Circular/pill-shaped nav items with a hand-drawn or rounded feel. Sticky or floating menu.                                                                     |
 
 ---
 
@@ -73,17 +73,20 @@ A single-page portfolio website for **Kenny Johns**, a creative professional. Th
 ## 4. Technical Requirements
 
 ### 4.1 Performance
+
 - Lighthouse score ≥ 90 on all metrics.
 - Lazy-load images and video poster.
 - Optimize all GIFs (consider converting to WebM/MP4 for the gallery for smaller file sizes).
 - Video streams from external host (no large files in the build).
 
 ### 4.2 Responsive Design
+
 - Fully responsive: desktop (1440px+), laptop (1024px), tablet (768px), mobile (375px).
 - Touch-friendly gallery scrolling on mobile.
 - Mobile nav: hamburger → drawer or overlay.
 
 ### 4.3 Accessibility
+
 - Semantic HTML (header, nav, main, section, footer).
 - Alt text on all images.
 - Keyboard-navigable.
@@ -91,28 +94,30 @@ A single-page portfolio website for **Kenny Johns**, a creative professional. Th
 - Video captions if available.
 
 ### 4.4 SEO
+
 - Meta title, description, Open Graph tags.
 - Structured data (Person schema).
 - Fast load times.
 - Canonical URL.
 
 ### 4.5 Analytics
+
 - Basic analytics integration (Plausible, Fathom, or Google Analytics).
 
 ---
 
 ## 5. Interactions & Motion
 
-| Element | Animation |
-|---|---|
-| **Page load** | Staggered fade-in of hero text and elements |
-| **Scroll** | Sections fade/slide in as they enter viewport |
-| **Gallery** | Continuous auto-scroll, pause on hover, drag to scrub |
-| **Client logos** | Grayscale → color on hover (CSS filter transition) |
-| **Nav links** | Scale/color transition on hover |
-| **Video** | Play button pulse or subtle float animation |
-| **Service cards** | Lift/shadow on hover |
-| **Form submit** | Button state change + success message |
+| Element           | Animation                                             |
+| ----------------- | ----------------------------------------------------- |
+| **Page load**     | Staggered fade-in of hero text and elements           |
+| **Scroll**        | Sections fade/slide in as they enter viewport         |
+| **Gallery**       | Continuous auto-scroll, pause on hover, drag to scrub |
+| **Client logos**  | Grayscale → color on hover (CSS filter transition)    |
+| **Nav links**     | Scale/color transition on hover                       |
+| **Video**         | Play button pulse or subtle float animation           |
+| **Service cards** | Lift/shadow on hover                                  |
+| **Form submit**   | Button state change + success message                 |
 
 ---
 
@@ -135,46 +140,46 @@ A single-page portfolio website for **Kenny Johns**, a creative professional. Th
 
 ### 7.1 What You'll Need (Services)
 
-| Service | Purpose | Choice | Est. Cost |
-|---|---|---|---|
-| **Domain name** | Your web address (e.g., kennyjohns.com) | TBD (Namecheap or Cloudflare Registrar) | ~$12/year |
-| **Static hosting** | Serves the website files | **Vercel** (existing account, free tier) | Free |
-| **Video hosting** | Streams the 90s reel | **YouTube** (existing account) | Free |
-| **Form backend** | Receives contact form submissions | **Formspree** (free tier: 50 submissions/mo) | Free |
-| **Analytics** | Track visitors | **Vercel Analytics** (bundled with hosting) | Free |
-| **CDN / Image optimization** | Fast global delivery + optimized images | Built into Vercel | Free |
+| Service                      | Purpose                                 | Choice                                       | Est. Cost |
+| ---------------------------- | --------------------------------------- | -------------------------------------------- | --------- |
+| **Domain name**              | Your web address (e.g., kennyjohns.com) | TBD (Namecheap or Cloudflare Registrar)      | ~$12/year |
+| **Static hosting**           | Serves the website files                | **Vercel** (existing account, free tier)     | Free      |
+| **Video hosting**            | Streams the 90s reel                    | **YouTube** (existing account)               | Free      |
+| **Form backend**             | Receives contact form submissions       | **Formspree** (free tier: 50 submissions/mo) | Free      |
+| **Analytics**                | Track visitors                          | **Vercel Analytics** (bundled with hosting)  | Free      |
+| **CDN / Image optimization** | Fast global delivery + optimized images | Built into Vercel                            | Free      |
 
 **Total monthly cost: $0/mo** + ~$12/year for a domain name.
 
 ### 7.2 Tech Stack (final decision: Option A)
 
-| Layer | Tool | Why |
-|---|---|---|
-| **Framework** | **Astro** | Static-first, ships zero JS by default, fast. Auto image optimization. Perfect for a mobile-first portfolio. |
-| **Styling** | **Tailwind CSS** + custom CSS for textures/animations | Rapid styling with utility classes. Custom CSS for the unique personality. Auto-purges unused styles. |
-| **Animations** | **CSS animations** + **Intersection Observer** | Scroll-triggered reveals, auto-scroll gallery, hover states. No heavy animation library needed. |
-| **Gallery** | **CSS marquee animation** | Zero-dependency infinite scroll. Touch-friendly. Lightweight. |
-| **Video** | **YouTube embed with lite-youtube facade** | Loads ~800KB YouTube iframe only on play tap. Critical for mobile. |
-| **Contact form** | **Formspree** (free tier) | No backend needed. 50 submissions/mo free. |
-| **Deployment** | **Vercel** (existing account) | One-click deploy from Git, preview URLs, fast CDN, free. |
+| Layer            | Tool                                                  | Why                                                                                                          |
+| ---------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Framework**    | **Astro**                                             | Static-first, ships zero JS by default, fast. Auto image optimization. Perfect for a mobile-first portfolio. |
+| **Styling**      | **Tailwind CSS** + custom CSS for textures/animations | Rapid styling with utility classes. Custom CSS for the unique personality. Auto-purges unused styles.        |
+| **Animations**   | **CSS animations** + **Intersection Observer**        | Scroll-triggered reveals, auto-scroll gallery, hover states. No heavy animation library needed.              |
+| **Gallery**      | **CSS marquee animation**                             | Zero-dependency infinite scroll. Touch-friendly. Lightweight.                                                |
+| **Video**        | **YouTube embed with lite-youtube facade**            | Loads ~800KB YouTube iframe only on play tap. Critical for mobile.                                           |
+| **Contact form** | **Formspree** (free tier)                             | No backend needed. 50 submissions/mo free.                                                                   |
+| **Deployment**   | **Vercel** (existing account)                         | One-click deploy from Git, preview URLs, fast CDN, free.                                                     |
 
 ---
 
 ## 8. Timeline Estimate
 
-| Phase | Duration |
-|---|---|
-| Design system (colors, type, spacing tokens) | 1 day |
-| Layout & structure (HTML/components) | 1–2 days |
-| Styling & textures | 1–2 days |
-| Video integration | 0.5 day |
-| Gallery (auto-scroll) | 0.5–1 day |
-| Client logos section | 0.5 day |
-| Services section | 0.5 day |
-| Contact form | 0.5 day |
-| Animations & polish | 1 day |
-| Responsive & testing | 1 day |
-| **Total** | **~7–9 working days** |
+| Phase                                        | Duration              |
+| -------------------------------------------- | --------------------- |
+| Design system (colors, type, spacing tokens) | 1 day                 |
+| Layout & structure (HTML/components)         | 1–2 days              |
+| Styling & textures                           | 1–2 days              |
+| Video integration                            | 0.5 day               |
+| Gallery (auto-scroll)                        | 0.5–1 day             |
+| Client logos section                         | 0.5 day               |
+| Services section                             | 0.5 day               |
+| Contact form                                 | 0.5 day               |
+| Animations & polish                          | 1 day                 |
+| Responsive & testing                         | 1 day                 |
+| **Total**                                    | **~7–9 working days** |
 
 ---
 

@@ -1,0 +1,7 @@
+dist
+node_modules
+.astro
+coverage
+*.min.js
+playwright-report
+test-results

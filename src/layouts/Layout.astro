@@ -35,17 +35,24 @@ const shareImageUrl = `${siteUrl}/og-image.png`;
   </head>
   <body class="texture-grain">
     <slot />
-    {/* Mobile menu: direct child of body so it is never inside the fixed header's stacking context */}
-    <div class="mobile-menu fixed inset-0 bg-cream z-[60] flex flex-col items-center justify-center gap-8 md:hidden touch-none" id="mobile-menu">
-      {navItems.map((item) => (
-        <a
-          href={item.href}
-          class="mobile-nav-link font-display text-4xl font-bold text-dark hover:text-pink transition-colors flex items-center gap-4"
-        >
-          <span class={`w-3 h-3 rounded-full ${item.dotBg}`}></span>
-          {item.label}
-        </a>
-      ))}
+    {
+      /* Mobile menu: direct child of body so it is never inside the fixed header's stacking context */
+    }
+    <div
+      class="mobile-menu fixed inset-0 bg-cream z-[60] flex flex-col items-center justify-center gap-8 md:hidden touch-none"
+      id="mobile-menu"
+    >
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="mobile-nav-link font-display text-4xl font-bold text-dark hover:text-pink transition-colors flex items-center gap-4"
+          >
+            <span class={`w-3 h-3 rounded-full ${item.dotBg}`} />
+            {item.label}
+          </a>
+        ))
+      }
     </div>
   </body>
 </html>
