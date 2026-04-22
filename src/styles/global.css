@@ -206,14 +206,28 @@ main {
     background-position: 55% center;
   }
   .hero-collage-overlay {
-    max-width: 92%;
+    max-width: 96%;
     border-radius: 0.6rem;
   }
   .hero-kicker {
-    letter-spacing: 0.1em;
+    font-size: clamp(1.05rem, 4.8vw, 1.8rem);
+    letter-spacing: 0.08em;
+  }
+  .hero-word {
+    margin: 0 0.04em;
   }
   .hero-collage-overlay::before {
     inset: -14px -12px -10px -12px;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero-kicker {
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+  }
+  .hero-word {
+    margin: 0 0.02em;
   }
 }
 
