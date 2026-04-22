@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #f5f0e8;
-  --color-dark: #1a1a1a;
-  --color-pink: #ff2d6b;
-  --color-blue: #2b4fff;
-  --color-yellow: #ffd600;
-  --color-red: #ff3b30;
-  --color-green: #00c853;
-  --color-coral: #ff6f61;
-  --color-hot-pink: #ff1493;
+  --color-cream: #f2efea;
+  --color-dark: #08080c;
+  --color-pink: #ef5a78;
+  --color-blue: #6f85ea;
+  --color-yellow: #efd91f;
+  --color-red: #f0463a;
+  --color-green: #20d7b7;
+  --color-coral: #f38729;
+  --color-hot-pink: #c540b7;
 
   --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
@@ -43,8 +43,12 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--color-dark);
-  background-color: var(--color-cream);
+  color: var(--color-cream);
+  background-color: #120f18;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(213, 95, 135, 0.22), transparent 38%),
+    radial-gradient(circle at 85% 12%, rgba(79, 184, 203, 0.24), transparent 35%),
+    radial-gradient(circle at 70% 78%, rgba(242, 154, 90, 0.2), transparent 40%);
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
@@ -58,9 +62,7 @@ main {
 
 /* Anchor targets: offset scroll so fixed header does not cover section titles */
 #reel,
-#case-studies,
 #clients,
-#services,
 #contact {
   scroll-margin-top: 5rem;
 }
@@ -73,11 +75,146 @@ main {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.035;
+  opacity: 0.045;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
+}
+
+/* Collage hero */
+.hero-collage-shell {
+  position: relative;
+  overflow: hidden;
+  background-color: #050505;
+  background-image: url("/hero/VideoWebsiteMockup_backgroundonly_3200x1800.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-collage-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.17) 0%,
+    rgba(0, 0, 0, 0.05) 42%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-collage-overlay {
+  position: relative;
+  z-index: 1;
+  border-radius: 0.45rem;
+  background: rgba(8, 8, 12, 0.83);
+  border: 1px solid rgba(248, 236, 210, 0.12);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(2px);
+  clip-path: polygon(
+    2% 6%,
+    8% 2%,
+    21% 4%,
+    34% 1%,
+    48% 5%,
+    61% 2%,
+    77% 5%,
+    94% 2%,
+    98% 12%,
+    95% 27%,
+    98% 44%,
+    94% 58%,
+    98% 77%,
+    95% 92%,
+    83% 96%,
+    67% 94%,
+    53% 98%,
+    39% 95%,
+    24% 98%,
+    10% 94%,
+    2% 86%,
+    5% 70%,
+    2% 52%,
+    5% 35%,
+    2% 20%
+  );
+}
+
+.hero-collage-overlay::before {
+  content: "";
+  position: absolute;
+  inset: -18px -24px -14px -24px;
+  background:
+    radial-gradient(circle at 16% 28%, rgba(0, 0, 0, 0.45), transparent 38%),
+    radial-gradient(circle at 82% 16%, rgba(0, 0, 0, 0.45), transparent 35%),
+    radial-gradient(circle at 75% 85%, rgba(0, 0, 0, 0.4), transparent 42%),
+    radial-gradient(circle at 24% 88%, rgba(0, 0, 0, 0.3), transparent 38%),
+    repeating-linear-gradient(
+      -9deg,
+      rgba(255, 255, 255, 0.02) 0 8px,
+      rgba(0, 0, 0, 0.03) 8px 16px
+    );
+  filter: blur(3px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero-kicker {
+  font-size: clamp(1.35rem, 4.2vw, 3.05rem);
+  letter-spacing: 0.14em;
+  line-height: 1;
+  font-weight: 500;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hero-word {
+  display: inline-block;
+  margin: 0 0.08em;
+}
+
+.hero-word--orange {
+  color: #f38729;
+}
+
+.hero-word--mint {
+  color: #20d7b7;
+}
+
+.hero-word--blue {
+  color: #6f85ea;
+}
+
+.hero-subcopy {
+  font-weight: 500;
+}
+
+.hero-cta {
+  background: #0f0f17;
+  border: none;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .hero-collage-shell {
+    background-position: 55% center;
+  }
+  .hero-collage-overlay {
+    max-width: 92%;
+    border-radius: 0.6rem;
+  }
+  .hero-kicker {
+    letter-spacing: 0.1em;
+  }
+  .hero-collage-overlay::before {
+    inset: -14px -12px -10px -12px;
+  }
 }
 
 /* Marquee animation */
