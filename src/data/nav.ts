@@ -1,7 +1,7 @@
 export const navItems = [
   {
     label: "Reel",
-    href: "#reel",
+    href: "/#reel",
     color: "blue",
     border: "border-blue/40",
     hoverBg: "hover:bg-blue",
@@ -9,15 +9,23 @@ export const navItems = [
   },
   {
     label: "Clients",
-    href: "#clients",
+    href: "/#clients",
     color: "pink",
     border: "border-pink/70",
     hoverBg: "hover:bg-pink",
     dotBg: "bg-pink",
   },
   {
+    label: "Credits",
+    href: "/credits",
+    color: "coral",
+    border: "border-coral/70",
+    hoverBg: "hover:bg-coral",
+    dotBg: "bg-coral",
+  },
+  {
     label: "Contact",
-    href: "#contact",
+    href: "/#contact",
     color: "dark",
     border: "border-yellow/70",
     hoverBg: "hover:bg-dark hover:text-cream",

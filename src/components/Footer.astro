@@ -7,7 +7,14 @@ const contactEmail = "kennyjohnsemail@gmail.com";
   <div
     class="mx-auto max-w-6xl flex flex-col sm:flex-row items-center justify-between gap-6"
   >
-    <div class="flex items-center gap-5">
+    <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-5">
+      <a
+        href="/credits"
+        class="text-cream/50 hover:text-coral text-sm font-body transition-colors"
+      >
+        Credits
+      </a>
+      <div class="flex items-center gap-5">
       {/* Email */}
       <a
         href={`mailto:${contactEmail}`}
@@ -35,6 +42,7 @@ const contactEmail = "kennyjohnsemail@gmail.com";
           ></path>
         </svg>
       </a>
+      </div>
     </div>
 
     <p class="text-cream/30 text-sm font-body">

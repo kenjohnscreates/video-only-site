@@ -10,4 +10,10 @@ describe("build contract", () => {
     const indexPath = join(root, "dist", "index.html");
     expect(existsSync(indexPath)).toBe(true);
   });
+
+  it("build produces dist/credits/index.html", () => {
+    const root = process.cwd();
+    const creditsPath = join(root, "dist", "credits", "index.html");
+    expect(existsSync(creditsPath)).toBe(true);
+  });
 });

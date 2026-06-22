@@ -1,0 +1,60 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { credits } from "../data/credits";
+---
+
+<Layout
+  title="Credit List - Kenny Johns"
+  description="Full production credit list for Kenny Johns — editor, producer, shooter, and creative across broadcast, digital, and branded content."
+>
+  <Header />
+  <main class="bg-dark texture-grain min-h-screen pt-24 pb-16 px-5">
+    <div class="mx-auto max-w-4xl relative z-10">
+      <header class="mb-12 text-center">
+        <h1
+          class="font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight text-cream mb-4"
+        >
+          Credit List
+        </h1>
+        <p class="text-cream/70 text-lg font-body mb-8 max-w-2xl mx-auto">
+          Selected credits across broadcast, digital, branded content, and live
+          production.
+        </p>
+        <a
+          href="/credit-list.pdf"
+          download
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-coral/70 text-cream font-display font-medium text-sm hover:bg-coral hover:border-transparent transition-colors"
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path>
+          </svg>
+          Download PDF
+        </a>
+      </header>
+
+      <ul class="space-y-6" role="list">
+        {
+          credits.map((credit) => (
+            <li class="border-b border-cream/10 pb-6 last:border-0">
+              <p class="font-display font-bold text-lg text-cream mb-1">
+                {credit.client}
+              </p>
+              <p class="text-cream/80 font-body mb-1">{credit.project}</p>
+              <p class="text-coral/90 text-sm font-body">{credit.roles}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </main>
+  <Footer />
+</Layout>
